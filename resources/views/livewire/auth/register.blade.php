@@ -4,7 +4,7 @@
             <div class="bg-white shadow-md border border-gray-200 rounded-2xl overflow-hidden">
                 <!-- Logo -->
                 <div class="bg-primary px-3 py-4 flex justify-center items-center">
-                    <img src="{{ asset('img/logo2.svg') }}" alt="Logo" class="w-auto h-36 lg:h-52">
+                    <img src="{{ asset('img/logo.svg') }}" alt="Logo" class="w-auto h-56 lg:h-60">
                 </div>
 
                 <!-- Form -->
