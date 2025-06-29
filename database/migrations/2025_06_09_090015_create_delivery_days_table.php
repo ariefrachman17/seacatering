@@ -9,13 +9,17 @@ class CreateDeliveryDaysTable extends Migration
     public function up()
     {
         Schema::create('delivery_days', function (Blueprint $table) {
-            $table->id('id');
-            $table->unsignedBigInteger('subscription_id');
-            $table->foreign('subscription_id')->references('subscription_id')->on('subscriptions');
-            $table->enum('day', ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']);
+            $table->id();
+            $table->foreignId('subscription_id')
+                  ->constrained('subscriptions', 'subscription_id')
+                  ->onDelete('cascade');
+            $table->enum('day', ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'saunday']);
             $table->timestamps();
+            
+            $table->index('subscription_id');
         });
     }
+
 
     public function down()
     {

@@ -9,20 +9,18 @@ class CreateSubscriptionsTable extends Migration
     public function up()
     {
         Schema::create('subscriptions', function (Blueprint $table) {
-            $table->id('subscription_id');
+            $table->id('subscription_id'); // Primary key dengan nama subscription_id
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('package_id');
-            $table->foreign('user_id')->references('user_id')->on('users');
-            $table->foreign('package_id')->references('package_id')->on('packages');
-            $table->decimal('total_price', 10, 2);
-            $table->enum('status', ['active', 'paused', 'cancelled']);
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
+            $table->integer('package_id');
             $table->date('start_date');
             $table->date('end_date');
-            $table->date('pause_start')->nullable();
-            $table->date('pause_end')->nullable();
+            $table->decimal('total_price', 10, 2);
+            $table->enum('status', ['active', 'inactive', 'cancelled', 'expired'])->default('active');
             $table->timestamps();
+            
+            $table->index(['user_id', 'status']);
         });
-
     }
 
     public function down()

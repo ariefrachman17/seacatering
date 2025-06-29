@@ -9,11 +9,14 @@ class CreateAllergyNotesTable extends Migration
     public function up()
     {
         Schema::create('allergy_notes', function (Blueprint $table) {
-            $table->id('id');
-            $table->unsignedBigInteger('subscription_id');
-            $table->foreign('subscription_id')->references('subscription_id')->on('subscriptions');
-            $table->text('note')->nullable();
+            $table->id();
+            $table->foreignId('subscription_id')
+                  ->constrained('subscriptions', 'subscription_id')
+                  ->onDelete('cascade');
+            $table->text('note');
             $table->timestamps();
+            
+            $table->index('subscription_id');
         });
     }
 

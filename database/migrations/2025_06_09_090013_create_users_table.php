@@ -14,10 +14,11 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('phone_number')->nullable();
-            $table->enum('role', ['customer', 'admin']);
+            $table->enum('role', ['customer', 'admin'])->default('customer');
             $table->timestamps();
         });
     }
+
     public function down()
     {
         Schema::dropIfExists('users');
