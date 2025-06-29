@@ -57,13 +57,32 @@
                         @endguest
 
                         @auth
-                            <a href="{{ route('subscription-management') }}"
-                                class="block text-gray-800 font-medium hover:text-primary">User Dashboard</a>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <button type="submit"
-                                    class="w-full text-left text-red-600 hover:text-red-800 font-medium">Log out</button>
-                            </form>
+                            @auth
+                                @if (Auth::user()->role === 'admin')
+                                    <a href="{{ route('admin.dashboard') }}"
+                                        class="block text-gray-800 font-medium hover:text-primary">Admin Dashboard</a>
+                                @else
+                                    <a href="{{ route('subscription-management') }}"
+                                        class="block text-gray-800 font-medium hover:text-primary">User Dashboard</a>
+                                @endif
+
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+
+                                    <button type="submit"
+                                        class="flex font-medium items-center gap-2 w-full text-left text-sm text-red-600 hover:bg-red-50 transition-colors duration-200">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                            <polyline points="16,17 21,12 16,7"></polyline>
+                                            <line x1="21" y1="12" x2="9" y2="12">
+                                            </line>
+                                        </svg>
+                                        Log out
+                                    </button>
+                                </form>
+                            @endauth
+
                         @endauth
                     </div>
                 </div>
@@ -131,17 +150,34 @@
                                     class="absolute right-0 top-full mt-1 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-[100]"
                                     style="display: none;">
                                     <div class="py-1">
-                                        <a href="{{ route('subscription-management') }}"
-                                            class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                                                <circle cx="9" cy="7" r="4"></circle>
-                                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-                                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                            </svg>
-                                            User Dashboard
-                                        </a>
+                                        @if (Auth::user()->role === 'admin')
+                                            <a href="{{ route('admin.dashboard') }}"
+                                                class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    viewBox="0 0 24 24">
+                                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                                    <circle cx="9" cy="7" r="4"></circle>
+                                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                                </svg>
+                                                Admin Dashboard
+                                            </a>
+                                        @else
+                                            <a href="{{ route('subscription-management') }}"
+                                                class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    viewBox="0 0 24 24">
+                                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                                    <circle cx="9" cy="7" r="4"></circle>
+                                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                                </svg>
+                                                User Dashboard
+                                            </a>
+                                        @endif
+
                                         <hr class="my-1 border-gray-200">
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
