@@ -17,6 +17,7 @@
                         <div>
                             <label for="email" class="block text-sm mb-1">Email address</label>
                             <input wire:model="email" type="email" id="email" name="email"
+                                placeholder="example@gmail.com"
                                 class="w-full border border-gray-300 rounded-lg ps-3 pe-10 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary @error('email') is-invalid @enderror"
                                 required>
                             @error('email')
@@ -28,9 +29,9 @@
                         <div>
                             <div class="flex justify-between mb-1">
                                 <label for="password" class="text-sm">Password</label>
-                                <a href="/forgot" class="text-sm text-primary hover:underline">Forgot?</a>
                             </div>
                             <input wire:model="password" type="password" id="password" name="password"
+                                placeholder="Enter password"
                                 class="w-full border border-gray-300 rounded-lg ps-3 pe-10 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary @error('password') is-invalid @enderror"
                                 required>
                             @error('password')

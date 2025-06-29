@@ -25,7 +25,7 @@
                                     class="w-full border border-gray-300 rounded-lg ps-3 pe-10 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary @error('name') is-invalid @enderror"
                                     required>
                                 @error('name')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    <div class="text-sm text-red-600 mt-1">{{ $message }}</div>
                                 @enderror
                             </div>
 
@@ -37,40 +37,40 @@
                                     class="w-full border border-gray-300 rounded-lg ps-3 pe-10 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary @error('email') is-invalid @enderror"
                                     required>
                                 @error('email')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    <div class="text-sm text-red-600 mt-1">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <!-- Phone Number -->
                             <div>
                                 <label for="phone_number" class="block text-sm mb-1">Phone number</label>
-                                <input wire:model="phone_number" type="tel" id="phone_number" name="phone_number"
+                                <input wire:model="phone_number" type="tel" id="phone_number" name="phone_number" placeholder="Enter phone number"
                                     class="w-full border border-gray-300 rounded-lg ps-3 pe-10 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                                     required>
                                 @error('phone_number')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    <div class="text-sm text-red-600 mt-1">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <!-- Password -->
                             <div>
                                 <label for="password" class="block text-sm mb-1">Password</label>
-                                <input wire:model="password" type="password" id="password" name="password"
+                                <input wire:model="password" type="password" id="password" name="password" placeholder="Enter password"
                                     class="w-full border border-gray-300 rounded-lg ps-3 pe-10 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary @error('password') is-invalid @enderror"
                                     required>
                                 @error('password')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    <div class="text-sm text-red-600 mt-1">{{ $message }}</div>
                                 @enderror
                             </div>
 
                             <!-- Confirm Password -->
                             <div>
                                 <label for="confirm_password" class="block text-sm mb-1">Confirm password</label>
-                                <input wire:model="confirm_password" type="password" id="confirm_password" name="confirm_password"
+                                <input wire:model="confirm_password" type="password" id="confirm_password" name="confirm_password" placeholder="Confirm password"
                                     class="w-full border border-gray-300 rounded-lg ps-3 pe-10 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary @error('confirm_password') is-invalid @enderror"
                                     required>
                                 @error('confirm_password')
-                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    <div class="text-sm text-red-600 mt-1">{{ $message }}</div>
                                 @enderror
                             </div>
 
@@ -83,7 +83,7 @@
 
                         <p class="mt-5 text-sm text-center text-gray-500">
                             Already have an account?
-                            <a href="/login" class="text-primary font-medium hover:underline">Sign in</a>
+                            <a href="{{ route('login') }}" class="text-primary font-medium hover:underline">Sign in</a>
                         </p>
                     </form>
                 </div>
