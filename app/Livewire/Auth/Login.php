@@ -22,6 +22,15 @@ class Login extends Component
 
         if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
             session()->regenerate();
+            
+            // Check user role and redirect accordingly
+            $user = Auth::user();
+            
+            if ($user->role === 'admin') {
+                return redirect()->intended('/admin/dashboard');
+            }
+            
+            // Default redirect for regular users
             return redirect()->intended('/');
         }
 
