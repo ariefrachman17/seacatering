@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    use Notifiable;
+
     protected $primaryKey = 'user_id';
 
     protected $fillable = [
@@ -29,8 +32,4 @@ class User extends Authenticatable
         return $this->hasMany(Subscription::class, 'user_id', 'user_id');
     }
 
-    public function loginSessions(): HasMany
-    {
-        return $this->hasMany(LoginSession::class, 'user_id', 'user_id');
-    }
 }

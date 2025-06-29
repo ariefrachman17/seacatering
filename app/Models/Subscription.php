@@ -2,40 +2,38 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Subscription extends Model
 {
-    protected $primaryKey = 'subscription_id';
+    use HasFactory;
 
+    protected $primaryKey = 'subscription_id';
+    
     protected $fillable = [
         'user_id',
-        'package_id',
+        'package_id', 
+        'start_date',
+        'end_date',
         'total_price',
-        'status',
-        'start_date',
-        'end_date',
-        'pause_start',
-        'pause_end',
+        'status'
     ];
 
-    protected $dates = [
-        'start_date',
-        'end_date',
-        'pause_start',
-        'pause_end',
+    protected $casts = [
+        'start_date' => 'date',
+        'end_date' => 'date',
+        'total_price' => 'decimal:2',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime'
     ];
 
+    // Relationships
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id', 'user_id');
-    }
-
-    public function package(): BelongsTo
-    {
-        return $this->belongsTo(Package::class, 'package_id', 'package_id');
+        return $this->belongsTo(User::class);
     }
 
     public function subscriptionMeals(): HasMany
@@ -51,5 +49,16 @@ class Subscription extends Model
     public function allergyNotes(): HasMany
     {
         return $this->hasMany(AllergyNote::class, 'subscription_id', 'subscription_id');
+    }
+
+    // Scopes
+    public function scopeActive($query)
+    {
+        return $query->where('status', 'active');
+    }
+
+    public function scopeForUser($query, $userId)
+    {
+        return $query->where('user_id', $userId);
     }
 }
