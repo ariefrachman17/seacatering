@@ -1,6 +1,6 @@
 <section class="py-12 bg-white px-4 sm:px-6 lg:px-8">
     <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-xl p-8 sm:p-10 text-center border border-gray-100">
-        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
             Ready to Start Your Healthy Journey?
         </h2>
         <p class="text-gray-600 mb-6">

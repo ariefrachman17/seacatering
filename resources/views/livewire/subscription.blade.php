@@ -1,6 +1,6 @@
 <section class="py-6 bg-gray-50">
     <div class="max-w-xl mx-auto bg-white p-8 rounded-xl shadow">
-        <h2 class="text-2xl font-bold text-center text-gray-900">Start Your Subscription</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900">Start Your Subscription</h2>
         <p class="text-center text-gray-600 mb-8">Start living a healthy life with our subscription packages</p>
 
         <form wire:submit.prevent="submit" class="space-y-6">

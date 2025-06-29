@@ -1,7 +1,7 @@
-<div class="min-h-screen bg-gray-50 py-8">
+<div class="bg-gray-50 py-8">
     <div class="max-w-6xl mx-auto px-4">
-        <div class="mb-8 text-center">
-            <h1 class="text-3xl font-bold text-gray-900">My Subscriptions</h1>
+        <div class="mb-6 md:mb-8 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900">My Subscriptions</h1>
             <p class="text-gray-600 mt-2">Manage your active meal subscriptions</p>
         </div>
 
@@ -20,7 +20,7 @@
 
         <!-- Subscriptions Grid -->
         @if($subscriptions->count() > 0)
-            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 ">
+            <div class="grid gap-6">
                 @foreach($subscriptions as $subscription)
                     <div class="bg-white rounded-lg shadow-md overflow-hidden">
                         <!-- Status Badge -->
