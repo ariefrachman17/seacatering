@@ -1,8 +1,9 @@
+
 <div class="min-h-screen bg-gray-50 py-8">
     <div class="max-w-7xl mx-auto px-4">
         <!-- Header -->
-        <div class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
+        <div class="mb-8 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900">Admin Dashboard</h1>
             <p class="text-gray-600 mt-2">Monitor subscription metrics and business performance</p>
         </div>
 
@@ -334,3 +335,4 @@
         });
     </script>
 </div>
+
