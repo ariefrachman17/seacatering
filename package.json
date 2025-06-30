@@ -6,7 +6,8 @@
         "build": "vite build",
         "dev": "vite",
         "serve": "php artisan serve --port=8080",
-        "start": "concurrently \"npm:serve\" \"npm:dev\""
+        "start": "concurrently \"npm:serve\" \"npm:dev\"",
+        "postinstall": "vite build"
     },
     "dependencies": {
         "swiper": "^11.2.8",
