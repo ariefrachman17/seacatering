@@ -58,7 +58,7 @@
 
                         @auth
                             @auth
-                                @if (Auth::user()->role === 'admin')
+                                @if (Auth::user()->email === 'admin@gmail.com')
                                     <a href="{{ route('admin.dashboard') }}"
                                         class="block text-gray-800 font-medium hover:text-primary">Admin Dashboard</a>
                                 @else
@@ -150,7 +150,7 @@
                                     class="absolute right-0 top-full mt-1 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-[100]"
                                     style="display: none;">
                                     <div class="py-1">
-                                        @if (Auth::user()->role === 'admin')
+                                        @if (Auth::user()->email === 'admin@gmail.com')
                                             <a href="{{ route('admin.dashboard') }}"
                                                 class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200">
                                                 <svg class="w-4 h-4" fill="none" stroke="currentColor"
