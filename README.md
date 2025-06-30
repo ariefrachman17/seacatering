@@ -7,60 +7,122 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# SEA Catering App — Proyek Submission COMPFEST 17
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Selamat datang di **SEA Catering App**! Aplikasi web ini merupakan bagian dari proses seleksi untuk **Software Engineering Academy (SEA) COMPFEST 17**. Aplikasi ini dirancang sebagai platform pemesanan dan manajemen layanan katering makanan sehat yang efisien, bertujuan untuk membantu SEA Catering mengelola pesanan, langganan, dan interaksi dengan pelanggan.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## ✨ Tautan Aplikasi (Live Demo)
 
-## Learning Laravel
+Aplikasi ini sudah di-deploy dan dapat diakses secara publik melalui tautan berikut:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**[https://seacatering-production.up.railway.app/](https://seacatering-production.up.railway.app/)**
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🚀 Tumpukan Teknologi (Tech Stack)
 
-## Laravel Sponsors
+| Kategori          | Teknologi                  |
+| :---------------- | :------------------------- |
+| 🧠 **Backend** | Laravel 11                 |
+| ⚡ **Frontend** | Livewire 3                 |
+| 🎨 **Styling** | Tailwind CSS 3   |
+| ✨ **Interaktivitas** | Alpine.js (via Livewire)   |
+| 🗄️ **Database** | MySQL                      |
+| 🔧 **Dev Server** | Vite                       |
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+### Langkah-langkah Instalasi
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+#### 1. Clone Repositori
+Salin repositori ini ke mesin lokal Anda dan masuk ke dalam direktori proyek.
+```bash
+git clone https://github.com/ariefrachman17/seacatering.git
+cd seacatering
+```
 
-## Contributing
+#### 2. Pasang Dependensi Backend
+Instal semua paket PHP yang dibutuhkan oleh Laravel menggunakan Composer.
+```bash
+composer install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#### 3. Konfigurasi Lingkungan
+Salin file `.env.example` untuk membuat file konfigurasi `.env` Anda.
+```bash
+cp .env.example .env
+```
+Selanjutnya, buat kunci enkripsi unik untuk aplikasi.
+```bash
+php artisan key:generate
+```
 
-## Code of Conduct
+#### 4. Siapkan Database
+Buka file `.env` dan sesuaikan konfigurasi database (`DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`).
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+> **Contoh Konfigurasi untuk Laragon (Default):**
+> ```ini
+> DB_CONNECTION=mysql
+> DB_HOST=127.0.0.1
+> DB_PORT=3306
+> DB_DATABASE=seacateringdb
+> DB_USERNAME=root
+> DB_PASSWORD=
+> ```
 
-## Security Vulnerabilities
+Selanjutnya, buat database baru.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+> **Panduan untuk Pengguna Laragon:**
+> 1.  Jalankan Laragon dan klik **`Start All`** untuk mengaktifkan Apache & MySQL.
+> 2.  Klik tombol **`Database`** pada dashboard. Ini akan membuka alat manajemen (seperti HeidiSQL).
+> 3.  Buat database baru. Pastikan namanya **sama persis** dengan nilai `DB_DATABASE` di file `.env` Anda (contoh: `seacateringdb`).
 
-## License
+#### 5. Pasang Dependensi Frontend
+Instal semua paket JavaScript yang dibutuhkan seperti Tailwind CSS dan Vite.
+```bash
+npm install
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+#### 6. Migrasi dan Seeding Database
+Jalankan perintah ini untuk membuat semua tabel dan mengisinya dengan data awal (termasuk akun demo).
+```bash
+php artisan migrate --seed
+```
+> 💡 **Catatan:** Jika terjadi error, pastikan konfigurasi dan nama database di file `.env` sudah benar dan layanan database Anda berjalan.
+
+#### 7. Buat Tautan Penyimpanan (Storage Link)
+Buat tautan simbolis agar file yang diunggah dapat diakses secara publik.
+```bash
+php artisan storage:link
+```
+> ⚠️ **Peringatan:** Perintah ini hanya perlu dijalankan sekali.
+
+#### 8. Jalankan Server Pengembangan
+Gunakan perintah `npm start` untuk menjalankan server PHP dan server Vite secara bersamaan.
+```bash
+npm start
+```
+
+#### 9. Buka Aplikasi
+Setelah semua server berjalan, aplikasi siap diakses melalui browser Anda.
+
+**Buka alamat:** 👉 **[http://localhost:8080](http://localhost:8080)**
+
+---
+
+### 🔑 Akun Demo untuk Login
+Setelah aplikasi berjalan, Anda dapat menggunakan akun demo berikut yang sudah dibuat melalui *seeder* untuk masuk dan menguji fungsionalitas:
+
+**👑Akun Administrator:**
+-   **Username:** `admin@gmail.com` //harus admin emailnya
+-   **Password:** `Admin@123`
+
+**👤Akun Pengguna (User):**
+-   **Username:** `user@example.com`
+-   **Password:** `user1234`
+
+---
+
+Terima kasih telah meninjau proyek ini!
