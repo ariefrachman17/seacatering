@@ -156,7 +156,7 @@
                 </div>
                 <h3 class="text-lg font-medium text-gray-900 mb-2">No Subscriptions Found</h3>
                 <p class="text-gray-500 mb-6">You haven't created any meal subscriptions yet.</p>
-                <a href="{{ route('subscription-management') }}" 
+                <a href="{{ route('subscription') }}" 
                    class="inline-flex items-center px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-lg font-medium transition-colors">
                     Create New Subscription
                 </a>
