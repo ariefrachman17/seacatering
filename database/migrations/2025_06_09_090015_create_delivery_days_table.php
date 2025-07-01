@@ -13,7 +13,7 @@ class CreateDeliveryDaysTable extends Migration
             $table->foreignId('subscription_id')
                   ->constrained('subscriptions', 'subscription_id')
                   ->onDelete('cascade');
-            $table->enum('day', ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'saunday']);
+            $table->enum('day', ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']);
             $table->timestamps();
             
             $table->index('subscription_id');

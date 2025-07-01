@@ -42,15 +42,15 @@ class Subscription extends Component
     ];
 
     protected $messages = [
-        'package_id.required' => 'Silakan pilih paket langganan.',
-        'package_id.in' => 'Paket yang dipilih tidak valid.',
-        'meals.required' => 'Silakan pilih minimal satu jenis makanan.',
-        'meals.min' => 'Silakan pilih minimal satu jenis makanan.',
-        'delivery_days.required' => 'Silakan pilih minimal satu hari pengiriman.',
-        'delivery_days.min' => 'Silakan pilih minimal satu hari pengiriman.',
-        'start_date.required' => 'Silakan pilih tanggal mulai langganan.',
-        'start_date.after_or_equal' => 'Tanggal mulai tidak boleh kurang dari hari ini.',
-        'allergies.max' => 'Catatan alergi tidak boleh lebih dari 500 karakter.',
+        'package_id.required' => 'Please select a subscription package.',
+        'package_id.in' => 'The selected package is invalid.',
+        'meals.required' => 'Please select at least one meal type.',
+        'meals.min' => 'Please select at least one meal type.',
+        'delivery_days.required' => 'Please select at least one delivery day.',
+        'delivery_days.min' => 'Please select at least one delivery day.',
+        'start_date.required' => 'Please select a subscription start date.',
+        'start_date.after_or_equal' => 'Start date cannot be earlier than today.',
+        'allergies.max' => 'Allergy notes cannot exceed 500 characters.',
     ];
 
     public function mount()
@@ -116,7 +116,7 @@ class Subscription extends Component
     public function submit()
     {
         if (!Auth::check()) {
-            session()->flash('error', 'Anda harus login terlebih dahulu.');
+            session()->flash('error', 'You must log in first.');
             return redirect()->route('login');
         }
 
@@ -124,18 +124,18 @@ class Subscription extends Component
         $this->calculatePrice();
 
         if ($this->total_price <= 0) {
-            session()->flash('error', 'Harga total tidak valid. Silakan pastikan pilihan Anda lengkap.');
+            session()->flash('error', 'Invalid total price. Please ensure your selections are complete.');
             return;
         }
 
-        // Cek subscription aktif
+        // Check for active subscription
         $activeSubscription = SubscriptionModel::where('user_id', Auth::id())
             ->where('status', 'active')
             ->where('end_date', '>=', Carbon::today())
             ->first();
 
         if ($activeSubscription) {
-            session()->flash('error', 'Anda sudah memiliki langganan aktif.');
+            session()->flash('error', 'You already have an active subscription.');
             return;
         }
 
@@ -180,7 +180,7 @@ class Subscription extends Component
 
             DB::commit();
 
-            session()->flash('message', 'Langganan berhasil dibuat! ID: SUB-' . str_pad($subscriptionId, 6, '0', STR_PAD_LEFT));
+            session()->flash('message', 'Subscription created successfully! ID: SUB-' . str_pad($subscriptionId, 6, '0', STR_PAD_LEFT));
 
             // Reset form
             $this->reset(['package_id', 'meals', 'delivery_days', 'allergies', 'total_price']);
@@ -195,7 +195,7 @@ class Subscription extends Component
                 'user_id' => Auth::id(),
                 'error' => $e->getTraceAsString()
             ]);
-            session()->flash('error', 'Terjadi kesalahan saat membuat langganan. Silakan coba lagi.');
+            session()->flash('error', 'An error occurred while creating the subscription. Please try again.');
         }
     }
 
