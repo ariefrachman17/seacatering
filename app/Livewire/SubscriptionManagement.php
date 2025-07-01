@@ -72,7 +72,7 @@ class SubscriptionManagement extends Component
 
             // Update subscription status to paused
             $this->selectedSubscription->update([
-                'status' => 'paused',
+                'status' => 'inactive',
                 'pause_start_date' => $this->pauseStartDate,
                 'pause_end_date' => $this->pauseEndDate,
                 'pause_reason' => $this->pauseReason,
